@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Sick Beat Machine</title>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+  <header>
+    <h1>🥁 Sick Beat Machine</h1>
+    <div class="controls">
+      <button id="startBtn">Start</button>
+      <button id="stopBtn" disabled>Stop</button>
+      <label>BPM <input id="bpm" type="range" min="60" max="200" value="120"/></label>
+      <label>Swing <input id="swing" type="range" min="0" max="0.6" step="0.01" value="0.1"/></label>
+      <button id="shuffleBtn">Shuffle</button>
+      <button id="clearBtn">Clear</button>
+      <button id="saveBtn">Save</button>
+      <button id="loadBtn">Load</button>
+      <button id="exportAudioBtn">Record</button>
+      <a id="downloadLink" class="hidden" download="sick-beat.webm">Download</a>
+    </div>
+  </header>
+
+  <main>
+    <section class="mixer">
+      <div class="channel">
+        <h3>KICK</h3>
+        <label>Vol <input data-track="kick" class="vol" type="range" min="0" max="1" step="0.01" value="0.9"></label>
+        <label>Decay <input id="kickDecay" type="range" min="0.02" max="1.2" step="0.01" value="0.35"></label>
+      </div>
+      <div class="channel">
+        <h3>SNARE</h3>
+        <label>Vol <input data-track="snare" class="vol" type="range" min="0" max="1" step="0.01" value="0.8"></label>
+        <label>Noise <input id="snareNoise" type="range" min="0" max="1" step="0.01" value="0.7"></label>
+      </div>
+      <div class="channel">
+        <h3>HAT</h3>
+        <label>Vol <input data-track="hat" class="vol" type="range" min="0" max="1" step="0.01" value="0.6"></label>
+        <label>Decay <input id="hatDecay" type="range" min="0.005" max="0.5" step="0.005" value="0.07"></label>
+      </div>
+      <div class="channel">
+        <h3>BASS</h3>
+        <label>Vol <input data-track="bass" class="vol" type="range" min="0" max="1" step="0.01" value="0.7"></label>
+        <label>Cutoff <input id="bassCutoff" type="range" min="100" max="4000" step="1" value="800"></label>
+        <label>Reso <input id="bassQ" type="range" min="0.1" max="20" step="0.1" value="6"></label>
+      </div>
+      <div class="fx">
+        <h3>FX</h3>
+        <label>LPF <input id="masterCutoff" type="range" min="200" max="12000" step="1" value="10000"></label>
+        <label>Delay Mix <input id="delayMix" type="range" min="0" max="0.9" step="0.01" value="0.15"></label>
+        <label>Delay Time <input id="delayTime" type="range" min="0.05" max="0.6" step="0.01" value="0.25"></label>
+        <label>Drive <input id="drive" type="range" min="0" max="1" step="0.01" value="0.0"></label>
+      </div>
+    </section>
+
+    <section class="grid">
+      <div class="legend">
+        <span>KICK</span>
+        <span>SNARE</span>
+        <span>HAT</span>
+        <span>BASS</span>
+      </div>
+      <div class="steps" id="steps"></div>
+    </section>
+  </main>
+
+  <footer>
+    <p>Made with ❤️ + Web Audio API. Press <kbd>Space</kbd> to start/stop.</p>
+  </footer>
+
+  <script src="main.js"></script>
+</body>
+</html>
